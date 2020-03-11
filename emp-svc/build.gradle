@@ -1,0 +1,13 @@
+apply plugin: 'application'
+
+mainClassName = 'ascelion.employee.server.EmployeeApp'
+
+dependencies {
+	implementation project( ':emp-api' )
+
+	implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http'
+
+	runtimeOnly 'org.glassfish.jersey.inject:jersey-hk2'
+//	runtimeOnly 'org.glassfish.jersey.media:jersey-media-json-binding'
+	runtimeOnly 'org.glassfish.jersey.media:jersey-media-json-jackson'
+}

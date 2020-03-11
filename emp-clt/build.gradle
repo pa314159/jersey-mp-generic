@@ -1,0 +1,47 @@
+apply plugin: 'java'
+
+def mainClassName = 'ascelion.employee.client.EmployeeApp'
+
+configurations {
+	jersey {
+		extendsFrom implementation
+	}
+	resteasy {
+		extendsFrom implementation
+	}
+}
+
+dependencies {
+	implementation project( ':emp-api' )
+
+	implementation 'org.eclipse.microprofile.rest.client:microprofile-rest-client-api'
+	runtimeOnly 'org.eclipse:yasson'
+
+	jersey 'org.glassfish.jersey.ext.microprofile:jersey-mp-rest-client'
+	jersey 'org.glassfish.jersey.ext.microprofile:jersey-mp-config'
+	jersey 'io.smallrye:smallrye-config'
+	jersey 'org.glassfish.jersey.media:jersey-media-json-jackson'
+
+	resteasy 'org.jboss.resteasy:resteasy-client-microprofile'
+//	resteasy 'org.jboss.resteasy:resteasy-json-binding-provider'
+	resteasy 'org.jboss.resteasy:resteasy-jackson2-provider'
+	resteasy 'jakarta.enterprise:jakarta.enterprise.cdi-api'
+}
+
+task runWithJersey(type: JavaExec ) {
+	main mainClassName
+	classpath jar
+	classpath configurations.jersey
+}
+
+task runWithResteasy(type: JavaExec ) {
+	main mainClassName
+	classpath jar
+	classpath configurations.resteasy
+}
+
+eclipse {
+	classpath {
+		plusConfigurations += [configurations.jersey]
+	}
+}
