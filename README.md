@@ -1,3 +1,5 @@
+## Demo for https://github.com/eclipse-ee4j/jersey/issues/4409
+
 Having an interface
 
 ```
@@ -31,8 +33,12 @@ at org.glassfish.jersey.microprofile.restclient.RestClientModel.from(RestClientM
 at org.glassfish.jersey.microprofile.restclient.RestClientBuilderImpl.build(RestClientBuilderImpl.java:195)
 ```
 
-Jersey Server is able to use this generic approach (i.e. implement a generic `ViewResourceBase` then a `EmploymentResourceImpl`.
-Also the MP rest client from `RestEasy` simply works. First run:
+Jersey Server is able to use this generic approach (i.e. implement a generic `ViewResourceBase` then a `EmploymentResourceImpl`. Also the MP rest client from `RestEasy` simply works.
+
+
+## Running the demo
+
+In a terminal run:
 
 ```
 ./gradlew emp-svc:run
